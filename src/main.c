@@ -3,6 +3,8 @@
 int main(int argc, char* argv[]){
     // init_win(); /* Initialise */
 
+    /* BUG: MAIN IS NOT ACCESSED */
+
     printf("DBG");
 
     int quit = 0;
