@@ -1,11 +1,12 @@
 #include "main.h"
 
-int main(int argc, char* argv[]){
-    // init_win(); /* Initialise */
-
-    /* BUG: MAIN IS NOT ACCESSED */
+int main(){
 
     printf("DBG");
+
+    init_win(); /* Initialise */
+
+    /* BUG: MAIN IS NOT ACCESSED */
 
     int quit = 0;
     SDL_Event e;    
