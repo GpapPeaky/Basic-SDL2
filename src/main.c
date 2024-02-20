@@ -1,7 +1,9 @@
 #include "main.h"
 
 int main(int argc, char* argv[]){
-    init_win(); /* Initialise */
+    // init_win(); /* Initialise */
+
+    printf("DBG");
 
     int quit = 0;
     SDL_Event e;    

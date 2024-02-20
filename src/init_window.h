@@ -1,6 +1,6 @@
 #include "include.aux"
-#include "SDL2/SDL.h"
-#include "SDL2/SDL_image.h"
+#include "SDL.h"
+#include "SDL_image.h"
 
 #ifndef INIT_WINDOW
 #define INIT_WINDOW
