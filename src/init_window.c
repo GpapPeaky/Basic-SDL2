@@ -4,6 +4,7 @@ SDL_Window * win = NULL;
 SDL_Renderer * rnd = NULL;
 
 INITIALISER init_win(){
+
     SDL_Init(SDL_INIT_EVERYTHING);
     if(SDL_Init(SDL_INIT_EVERYTHING) == -1){
         printf("SDL Could Not Initialise, Error: %s\n",SDL_GetError());
@@ -30,5 +31,5 @@ INITIALISER init_win(){
         return;
     }
 
-    SDL_RenderClear(rnd);
+    printf("Init Successful!\n");
 }

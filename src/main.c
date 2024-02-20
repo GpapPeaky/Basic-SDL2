@@ -1,10 +1,7 @@
 #include "main.h"
 
 int main(int argc, char* argv[]){
-
     init_win(); /* Initialise */
-
-    printf("Works!\n");
 
     int quit = 0;
     SDL_Event e;    

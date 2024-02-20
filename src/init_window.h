@@ -1,4 +1,4 @@
-#include "include.h"
+#include "include.aux"
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 
