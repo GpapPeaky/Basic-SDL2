@@ -1,7 +1,7 @@
 #include "init_window.h"
 
-SDL_Window * win = NULL;
-SDL_Renderer * rnd = NULL;
+SDL_Window * win;
+SDL_Renderer * rnd;
 
 INITIALISER init_win(){
 

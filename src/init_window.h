@@ -2,8 +2,8 @@
 #include "SDL.h"
 #include "SDL_image.h"
 
-#ifndef INIT_WINDOW
-#define INIT_WINDOW
+#ifndef __INIT_WIN_H__
+#define __INIT_WIN_H__
 
 extern SDL_Window * win;
 extern SDL_Renderer * rnd;
