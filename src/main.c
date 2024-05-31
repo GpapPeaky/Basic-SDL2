@@ -2,8 +2,6 @@
 
 int main(int argc, char* argv[]){
 
-    printf("DBG");
-
     init_win(); /* Initialise */
 
     int quit = 0;
@@ -11,15 +9,12 @@ int main(int argc, char* argv[]){
 
     while(!quit){
         while(SDL_PollEvent(&e) != 0){
-            if(e.key.keysym.sym == SDLK_ESCAPE){
+            if(e.key.keysym.sym == SDLK_ESCAPE || e.key.keysym.sym == SDLK_e){
                 quit = 1;
             }
         }
 
-        /* Updates to assets / sprites */
-
-        SDL_SetRenderDrawColor(rnd, 0, 0, 255, 255);
-
+        /* Updates to assets - sprites */
 
         SDL_RenderClear(rnd);
 
