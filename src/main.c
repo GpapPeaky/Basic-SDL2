@@ -6,8 +6,6 @@ int main(int argc, char* argv[]){
 
     init_win(); /* Initialise */
 
-    /* BUG: MAIN IS NOT ACCESSED */
-
     int quit = 0;
     SDL_Event e;    
 
@@ -17,8 +15,16 @@ int main(int argc, char* argv[]){
                 quit = 1;
             }
         }
+
+        /* Updates to assets / sprites */
+
         SDL_SetRenderDrawColor(rnd, 0, 0, 255, 255);
+
+
         SDL_RenderClear(rnd);
+
+        /* Render functions */
+
         SDL_RenderPresent(rnd);
         SDL_Delay(100);
     }
