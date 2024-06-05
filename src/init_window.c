@@ -31,5 +31,5 @@ INITIALISER init_win(){
         return;
     }
 
-    printf("Init Successful!\n");
+    return;
 }
