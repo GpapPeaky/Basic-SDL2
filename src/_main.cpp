@@ -8,19 +8,11 @@ int main(int argc, char* argv[]){
     SDL_Event e;    
 
     while(!quit){
-        while(SDL_PollEvent(&e) != 0){
-            if(e.key.keysym.sym == SDLK_ESCAPE || e.key.keysym.sym == SDLK_e){
-                quit = 1;
-            }
-        }
+        handle_events(quit, e);
 
-<<<<<<< HEAD:src/_main.cpp
         /* Updates to assets / sprites */
 
         SDL_SetRenderDrawColor(rnd, 0, 0, 255, 255);
-=======
-        /* Updates to assets - sprites */
->>>>>>> 3e881380d259f070978efcbd5ecb22d3c991548f:src/main.c
 
         SDL_RenderClear(rnd);
 
