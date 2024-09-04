@@ -14,9 +14,13 @@ int main(int argc, char* argv[]){
             }
         }
 
+<<<<<<< HEAD:src/_main.cpp
         /* Updates to assets / sprites */
 
         SDL_SetRenderDrawColor(rnd, 0, 0, 255, 255);
+=======
+        /* Updates to assets - sprites */
+>>>>>>> 3e881380d259f070978efcbd5ecb22d3c991548f:src/main.c
 
         SDL_RenderClear(rnd);
 
