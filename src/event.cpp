@@ -1,9 +1,11 @@
 #include "event.hpp"
 
-void handle_events(int quit, SDL_Event e){
-    while(SDL_PollEvent(&e) != 0){
-        if(e.key.keysym.sym == SDLK_ESCAPE || e.key.keysym.sym == SDLK_e){
-            quit = 1;
+void handle_events(bool& quit){
+    SDL_Event e;
+
+    while(SDL_PollEvent(&e)){
+        if(e.type == SDL_QUIT || (e.type == SDL_KEYDOWN && (e.key.keysym.sym == SDLK_ESCAPE || e.key.keysym.sym == SDLK_e))){
+            quit = true;
         }
     }
 

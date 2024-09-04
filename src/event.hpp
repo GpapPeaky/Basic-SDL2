@@ -8,8 +8,7 @@
  * @brief Handles main loop events
  * 
  * @param quit Checks if we have quit the main loop
- * @param e Event executed
  */
-void handle_events(int quit, SDL_Event e);
+void handle_events(bool& quit);
 
 #endif

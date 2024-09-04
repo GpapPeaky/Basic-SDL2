@@ -4,11 +4,10 @@ int main(int argc, char* argv[]){
 
     init_win(); /* Initialise */
 
-    int quit = 0;
-    SDL_Event e;    
+    bool quit = false;
 
     while(!quit){
-        handle_events(quit, e);
+        handle_events(quit); /* Creates a new event to poll per call (Might need to be optimised) */
 
         /* Updates to assets / sprites */
 
