@@ -1,4 +1,4 @@
-#include "main.h"
+#include "_includes.hpp"
 
 int main(int argc, char* argv[]){
 
@@ -23,12 +23,11 @@ int main(int argc, char* argv[]){
         /* Render functions */
 
         SDL_RenderPresent(rnd);
-        SDL_Delay(100);
     }
 
     SDL_DestroyRenderer(rnd);
     SDL_DestroyWindow(win);
     SDL_Quit();
 
-    return EXIT_SUCCESS;
+    return 0;
 }

@@ -1,6 +1,6 @@
 #ifndef MAIN
 #define MAIN
 
-#include "init_window.h"
+#include "init_window.hpp"
 
 #endif

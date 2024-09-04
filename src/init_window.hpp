@@ -1,4 +1,3 @@
-#include "include.aux"
 #include "SDL.h"
 #include "SDL_image.h"
 
@@ -11,6 +10,6 @@ extern SDL_Renderer * rnd;
 /**
  * @brief Initialises the renderer, the window, and the SDL/IMG modes required
 */
-INITIALISER init_win();
+void init_win();
 
 #endif

@@ -1,4 +1,4 @@
-#include "init_window.h"
+#include "init_window.hpp"
 
 SDL_Window * win;
 SDL_Renderer * rnd;
