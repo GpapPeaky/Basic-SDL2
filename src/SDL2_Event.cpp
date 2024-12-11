@@ -1,6 +1,6 @@
-#include "event.hpp"
+#include "SDL2_Event.hpp"
 
-void handle_events(bool& quit){
+void SDL2_HandleEvents(bool& quit){
     SDL_Event e;
 
     while(SDL_PollEvent(&e)){
