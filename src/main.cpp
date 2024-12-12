@@ -3,6 +3,8 @@
 int main(int argc, char* argv[]){
 
     SDL2_InitWin(); /* Initialise */
+    OGL_InitContext(SDL2_Win);
+    OGL_OpenGLInfo();
 
     bool quit = false;
 
@@ -11,13 +13,11 @@ int main(int argc, char* argv[]){
 
         /* Updates to assets / sprites */
 
-        SDL_SetRenderDrawColor(SDL2_Rnd, 0, 0, 255, 255);
+        /* OpenGL rendering functions */
+        OGL_PreDraw();
+        OGL_Draw();
 
-        SDL_RenderClear(SDL2_Rnd);
-
-        /* Render functions */
-
-        SDL_RenderPresent(SDL2_Rnd);
+        SDL_GL_SwapWindow(SDL2_Win);
     }
 
     SDL_DestroyRenderer(SDL2_Rnd);
