@@ -2,14 +2,14 @@
 
 void OGL_TriangleVertexF(GLuint& VAO, GLuint& VBO){
     /* Lives on the CPU */
+    /* We can have more attributes in here, for example vertex1 can also have R,G,B,A floats */
     const std::vector<GLfloat> vertexPos{
         /*  x      y     z */
         -0.5f, -0.3f, 0.5f, // Vertex 1 
         0.5f, -0.1f, 0.5f,  // Vertex 2
         0.3f, 0.3f, 0.8f,   // Vertex 3
     };
-
-    /* z coord is ommited in 2D*/
+    /* z coord is ommited in 2D */
 
     /* VAO, lives in the GPU */
     glGenVertexArrays(1, &VAO);
