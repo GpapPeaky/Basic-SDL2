@@ -16,8 +16,9 @@ const std::string OGLS_PeakyV =
  */
 const std::string OGLS_PeakyF = 
     "#version 410 core\n"
+    "in vec4 pos;\n"
     "out vec4 color;\n"
     "void main()\n"
     "{\n"
-    "   color = vec4(0, 255, 10, 100);\n"
+    "    color = vec4(gl_FragCoord.x / 800.0, gl_FragCoord.y / 600.0, 0.5, 1.0); // Screen-space gradient\n"
     "}\n";
