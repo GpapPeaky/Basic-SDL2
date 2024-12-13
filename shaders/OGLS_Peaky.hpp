@@ -19,6 +19,5 @@ const std::string OGLS_PeakyF =
     "out vec4 color;\n"
     "void main()\n"
     "{\n"
-    "   float time = (gl_FragCoord.x + gl_FragCoord.y) * 0.01;\n"
-    "   color = vec4(sin(cos(sin(cos(sin(cos(sin(cos(sin(time / 25))))))))), sin(time * 0.5), sin(time * 0.0), cos(time));\n"
+    "   color = vec4(0, 255, 10, 100);\n"
     "}\n";
