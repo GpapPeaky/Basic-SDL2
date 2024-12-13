@@ -8,6 +8,9 @@
 #define SUCCESS 0
 #define FAILURE -1
 
+#define WIN_W 900
+#define WIN_H 800
+
 extern SDL_Window* SDL2_Win;
 extern SDL_Renderer* SDL2_Rnd;
 

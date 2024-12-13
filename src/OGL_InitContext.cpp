@@ -19,6 +19,7 @@ void OGL_InitContext(SDL_Window* window){
         return;
     }
 
+    /* Initialises the OpenGL functions by getting their addresses from the GPU */
     if(!gladLoadGLLoader(SDL_GL_GetProcAddress)){
         std::fprintf(stderr, "GLAD was not initialised\n");
         return;

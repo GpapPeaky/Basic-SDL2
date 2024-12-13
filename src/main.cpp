@@ -4,18 +4,23 @@ int main(int argc, char* argv[]){
 
     SDL2_InitWin(); /* Initialise */
     OGL_InitContext(SDL2_Win);
-    OGL_OpenGLInfo();
 
-    bool quit = false;
+    /* Initialise an object */
+    GLuint vao, vbo;
+    OGL_TriangleVertexF(vao, vbo);
 
-    while(!quit){
-        SDL2_HandleEvents(quit); /* Creates a new event to poll per call (Might need to be optimised) */
+    GLuint shaderProg;
+    shaderProg = OGL_CreateGraphicsPipeline(OGLS_DummyV, OGLS_DummyF);
+
+    bool SDL2_Quit = false;
+    while(!SDL2_Quit){
+        SDL2_HandleEvents(SDL2_Quit); /* Creates a new event to poll per call (Might need to be optimised) */
 
         /* Updates to assets / sprites */
 
         /* OpenGL rendering functions */
-        OGL_PreDraw();
-        OGL_Draw();
+        OGL_PreDraw(shaderProg);
+        OGL_Draw(vao, vbo);
 
         SDL_GL_SwapWindow(SDL2_Win);
     }

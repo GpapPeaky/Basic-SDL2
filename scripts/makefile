@@ -8,7 +8,9 @@ SRC = $(SRCP)main.cpp\
 $(SRCP)SDL2_Event.cpp\
 $(SRCP)SDL2_InitWin.cpp\
 $(SRCP)OGL_InitContext.cpp\
-$(SRCP)OGL_Render.cpp
+$(SRCP)OGL_Render.cpp\
+$(SRCP)OGL_Triangle.cpp\
+$(SRCP)OGL_Shader.cpp
 
 # Third Party
 INCL = -IThirdParty/SDL2/include/

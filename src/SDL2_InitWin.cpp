@@ -15,7 +15,7 @@ int SDL2_InitWin(void){
     }
 
     /* Initialising window and renderer */
-    SDL2_Win = SDL_CreateWindow("SDL Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 900, 800, SDL_WINDOW_OPENGL);
+    SDL2_Win = SDL_CreateWindow("SDL Window", 240, 120, WIN_W, WIN_H, SDL_WINDOW_OPENGL);
     if(SDL2_Win == NULL){
         std::fprintf(stderr, "Failed To Create Window: %s\n", SDL_GetError());
         return FAILURE;
