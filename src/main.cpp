@@ -1,7 +1,6 @@
 #include "auxf/includes.aux"
 
 int main(int argc, char* argv[]){
-
     SDL2_InitWin(); /* Initialise */
     OGL_InitContext(SDL2_Win);
 
