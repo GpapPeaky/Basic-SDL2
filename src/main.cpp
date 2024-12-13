@@ -10,7 +10,7 @@ int main(int argc, char* argv[]){
     OGL_TriangleVertexF(vao, vbo);
 
     GLuint shaderProg;
-    shaderProg = OGL_CreateGraphicsPipeline(OGLS_DummyV, OGLS_DummyF);
+    shaderProg = OGL_CreateGraphicsPipeline(OGLS_PeakyV, OGLS_PeakyF);
 
     bool SDL2_Quit = false;
     while(!SDL2_Quit){
