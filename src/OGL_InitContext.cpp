@@ -6,9 +6,9 @@ void OGL_InitContext(SDL_Window* window){
     /* We first set the attributes, then we create the context */
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1); /* OpenGL 4.1 */
-
     /* Remove deprecated OpenGL functions, forces us to use the new ones */
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE); /* OpenGL 4.1 Core */
+
     /* Double buffer for smoother transitions */
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);

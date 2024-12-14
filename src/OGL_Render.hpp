@@ -1,6 +1,7 @@
 #include "../ThirdParty/SDL2/include/SDL2/SDL.h"
 #include "../ThirdParty/GLAD/include/glad/glad.h"
 #include "OGL_Shader.hpp" // For creating the shader object to be used in the graphics pipeline
+#include "OGL_Object.hpp" // For the vertex object abstraction
 #include "SDL2_InitWin.hpp" // For creating the shader object to be used in the graphics pipeline
 
 #pragma once
@@ -30,3 +31,10 @@ void OGL_PreDraw(GLuint graphicsPipeline);
  * @param VBO Vertex buffer object to draw from
  */
 void OGL_Draw(GLuint VAO, GLuint VBO);
+
+/**
+ * @brief Draws an object
+ * 
+ * @param object Object to draw
+ */
+void OGL_DrawObject(OGL_VertexObject object);

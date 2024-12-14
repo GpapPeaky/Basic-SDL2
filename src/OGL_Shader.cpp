@@ -9,6 +9,9 @@ GLuint OGL_CompileShader(GLuint type, const std::string& sourceCode){
         shaderObject = glCreateShader(GL_VERTEX_SHADER);
     }else if(type == GL_FRAGMENT_SHADER){
         shaderObject = glCreateShader(GL_FRAGMENT_SHADER);
+    }else{
+        std::fprintf(stderr, "Unlawful shader type provided, while compiling shaders\n");
+        return 0;
     }
 
     /* Set up the shader source code */

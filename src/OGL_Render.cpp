@@ -9,6 +9,7 @@ void OGL_PreDraw(GLuint graphicsPipeline){
     glDisable(GL_CULL_FACE);
     
     glViewport(0, 0, WIN_W, WIN_H);
+    /* Screen background */
     glClearColor(1.f, 1.f, 0.f, 1.f);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
@@ -24,6 +25,12 @@ void OGL_Draw(GLuint VAO, GLuint VBO){
     
     /* Draw the selected arrays */
     glDrawArrays(GL_TRIANGLES, 0, 3);
+
+    return;
+}
+
+void OGL_DrawObject(OGL_VertexObject object){
+    OGL_Draw(object.VAO, object.VBO);
 
     return;
 }
