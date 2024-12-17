@@ -20,7 +20,7 @@
  */
 typedef struct OGL_VertexObject{
     GLuint VAO; /* Vertex array object */
-    GLuint positionVBO; /* positions: vertex buffer object */
+    GLuint VBO; /* positions: vertex buffer object */
     /* By adding more 'VBOs' we can give more data to each object */
     /* And if it is not required, we simply do not engage with the fields */
     /* We can omit the extra VBO by only using one */

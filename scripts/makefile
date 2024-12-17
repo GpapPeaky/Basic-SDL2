@@ -10,6 +10,7 @@ $(SRCP)SDL2_InitWin.cpp\
 $(SRCP)OGL_InitContext.cpp\
 $(SRCP)OGL_Render.cpp\
 $(SRCP)OGL_Triangle.cpp\
+$(SRCP)OGL_Quad.cpp\
 $(SRCP)OGL_Shader.cpp\
 $(SRCP)OGL_Object.cpp
 

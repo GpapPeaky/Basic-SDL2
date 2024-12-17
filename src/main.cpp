@@ -7,7 +7,7 @@ int main(int argc, char* argv[]){
 
     /* Initialise an object, vertex specification */
     OGL_VertexObject o1;
-    OGL_TriangleVertexFC(o1);
+    OGL_QuadVertexFC(o1);
 
     /* Graphics pipeline for the shader program */
     GLuint shaderProg;
