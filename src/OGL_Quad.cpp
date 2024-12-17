@@ -7,6 +7,19 @@ void OGL_QuadVertexFC(OGL_VertexObject& object){
     /* And combine the buffer objects, just like the VAO */
     /* Tightly packed data format */
     
+    /* We need to get rid of vertices that repeat */
+    /* We will use an Index Buffer Object (IBO i.e EBO)*/
+
+    /* VBO structure: */
+    // VBO
+    // WARN: Stride: We need to jump 6 things NOT 3
+    // if we add a new attribute, we will have to update the strides as well as the initial offsets, ect...
+    // This format can be seen in the vertices vector
+    // x1,y1,z1 _ r1,g1,b1 | x2,y2,z2 _ r2,g2,b2 _ ...
+    // 0                   | 1                     | 2 ...
+    // IBO structure
+    // 2, 0, 1, 3, 2, 1 (for the rectangle starting from index 2)
+
     const std::vector<GLfloat> vertices{
         /* Rendering is completed with CCW order */
         /* x     y      z */
@@ -14,25 +27,31 @@ void OGL_QuadVertexFC(OGL_VertexObject& object){
 
         /* Triangle  1*/
 
+        // 0 vertex
         -0.5f, -0.5f, 0.0f, // Vertex 1 pos LV
         1.0f, 0.0f, 0.0f, // Vertex 1 colours
 
+        // 1 vertex
         0.5f, -0.5f, 0.0f,  // Vertex 2 pos RV
         0.0f, 1.0f, 0.0f, // Vertex 2 colours
 
+        // 2 vertex
         -0.5f, 0.5f, 0.0f,   // Vertex 3 pos Top Left Vertex Position
         0.0f, 0.0f, 1.0f, // Vertex 3 colours
 
         /* Triangle 2 */
 
-        0.5f, -0.5f, 0.0f,  // Vertex 2 pos RV
-        0.0f, 1.0f, 0.0f, // Vertex 2 colours
+        // repeated
+        // 0.5f, -0.5f, 0.0f,  // Vertex 2 pos RV
+        // 0.0f, 1.0f, 0.0f, // Vertex 2 colours
 
+        // 3 vertex
         0.5f, 0.5f, 0.0f,   // Vertex 3 pos Top Right Vertex Position
-        0.0f, 0.0f, 1.0f, // Vertex 3 colours
+        0.0f, 0.0f, 1.0f // Vertex 3 colours
 
-        -0.5f, 0.5f, 0.0f, // Vertex 1 pos Top Left Vertex Position
-        0.0f, 0.0f, 1.0f // Vertex 1 colours
+        // repeated
+        // -0.5f, 0.5f, 0.0f, // Vertex 1 pos Top Left Vertex Position
+        // 0.0f, 0.0f, 1.0f // Vertex 1 colours
     };
     /* z coord is ommited in 2D */
 
@@ -60,6 +79,18 @@ void OGL_QuadVertexFC(OGL_VertexObject& object){
     glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(GLfloat), // Size of data , doesn't change since these are all floats
                 vertices.data(), // Data 
                 GL_STATIC_DRAW); // Give OpenGL, a hint of what we will use the data for
+
+    /* Setup IBO/EBO */
+
+    /* Indeces */
+    const std::vector<GLuint> indexBuffer {2, 0, 1, 3, 2, 1};    
+
+    glGenBuffers(1, &object.IBO);
+    /* Not the array buffer, but the element array/index buffer */
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, object.IBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexBuffer.size() * sizeof(GLuint),
+                indexBuffer.data(),
+                GL_STATIC_DRAW);
 
     /* Enable attributes of the vertex (position for example) */
     /* We tell OpenGL, how to use the VAO */

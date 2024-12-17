@@ -25,4 +25,5 @@ typedef struct OGL_VertexObject{
     /* And if it is not required, we simply do not engage with the fields */
     /* We can omit the extra VBO by only using one */
     // GLuint RGBVBO; /* colours: vertex buffer object */
+    GLuint IBO; /* Index Buffer Object, for vertices rendering order (we can skip vertices repeating in quads like this) */
 }OGL_VertexObject;

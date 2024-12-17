@@ -6,8 +6,6 @@ int main(int argc, char* argv[]){
     OGL_InitContext(SDL2_Win);
 
     /* Initialise an object, vertex specification */
-    OGL_VertexObject o1;
-    OGL_TriangleVertexFC(o1);
     OGL_VertexObject o2;
     OGL_QuadVertexFC(o2);
 
@@ -26,7 +24,6 @@ int main(int argc, char* argv[]){
         /* Rendering order matters */
         OGL_PreDraw(shaderProg);
         OGL_DrawObject(o2);
-        OGL_DrawObject(o1);
 
         SDL_GL_SwapWindow(SDL2_Win);
     }

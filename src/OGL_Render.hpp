@@ -29,8 +29,9 @@ void OGL_PreDraw(GLuint graphicsPipeline);
  *  
  * @param VAO Vertex array object to draw
  * @param VBO Vertex buffer object to draw from (not required, since the VAO has all the data we want)
+ * @param IBO Index buffer object (rendering order of vertices)
  */
-void OGL_Draw(GLuint VAO, GLuint VBO = 0);
+void OGL_Draw(GLuint VAO, GLuint VBO, GLuint IBO);
 
 /**
  * @brief Draws an object
