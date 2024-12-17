@@ -23,5 +23,6 @@ typedef struct OGL_VertexObject{
     GLuint positionVBO; /* positions: vertex buffer object */
     /* By adding more 'VBOs' we can give more data to each object */
     /* And if it is not required, we simply do not engage with the fields */
-    GLuint RGBVBO; /* colours: vertex buffer object */
+    /* We can omit the extra VBO by only using one */
+    // GLuint RGBVBO; /* colours: vertex buffer object */
 }OGL_VertexObject;

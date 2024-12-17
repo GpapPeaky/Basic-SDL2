@@ -52,19 +52,30 @@ void OGL_TriangleVertexF(OGL_VertexObject& object){
 void OGL_TriangleVertexFC(OGL_VertexObject& object){
     /* Lives on the CPU */
     /* We can have more attributes in here, for example vertex1 can also have R,G,B,A floats */
-    const std::vector<GLfloat> vertexPos{
+    /* We will remove the extra vector */
+    /* And combine the buffer objects, just like the VAO */
+    /* Tightly packed data format */
+    
+    const std::vector<GLfloat> vertices{
         /*  x      y     z */
-        0.0f, -0.2f, 0.2f, // Vertex 1 
-        0.1f, -0.1f, 0.2f,  // Vertex 2
-        0.1f, 0.2f, 0.1f,   // Vertex 3
+        -0.8f, -0.8f, 0.0f, // Vertex 1 pos
+        /* R     G      B */
+        1.0f, 0.0f, 0.0f, // Vertex 1 colours
+        0.8f, -0.8f, 0.0f,  // Vertex 2 pos
+        0.0f, 1.0f, 0.0f, // Vertex 2 colours
+        0.0f, 0.8f, 0.0f,   // Vertex 3 pos
+        0.0f, 0.0f, 1.0f // Vertex 3 colours
     };
     /* z coord is ommited in 2D */
-    const std::vector<GLfloat> vertexRGB{
-        /* R     G      B */
-        1.0f, 0.0f, 0.0f,
-        0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 1.0f
-    };
+
+    /* We combine both positions and rgb in one VBO */
+    // const std::vector<GLfloat> vertexRGB{
+    //     /* R     G      B */
+    //     1.0f, 0.0f, 0.0f,
+    //     0.0f, 1.0f, 0.0f,
+    //     0.0f, 0.0f, 1.0f
+    // };
+
     /* VAO, lives in the GPU */
     /* The VAO tells us about the attributes of the object */
     glGenVertexArrays(1, &object.VAO);
@@ -78,8 +89,8 @@ void OGL_TriangleVertexFC(OGL_VertexObject& object){
     /* We select that buffer, we specifically pass the position VBO */
     glBindBuffer(GL_ARRAY_BUFFER, object.positionVBO);
     /* Give our data to the VBO */
-    glBufferData(GL_ARRAY_BUFFER, vertexPos.size() * sizeof(GLfloat), // Size of data
-                vertexPos.data(), // Data 
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(GLfloat), // Size of data , doesn't change since these are all floats
+                vertices.data(), // Data 
                 GL_STATIC_DRAW); // Give OpenGL, a hint of what we will use the data for
 
     /* Enable attributes of the vertex (position for example) */
@@ -91,18 +102,19 @@ void OGL_TriangleVertexFC(OGL_VertexObject& object){
     glVertexAttribPointer(0, // VAO index, and how to handle it
                         3, // Number of elements in each vertex
                         GL_FLOAT, // type of element
-                        GL_FALSE,
-                        sizeof(GLfloat) * 3, // Bytes per element
-                        (void*)0); // Offset
+                        GL_FALSE, // Non normalised information
+                        sizeof(GLfloat) * 6, // Strides for next element, byte offset, we hop 3 floats for the next x,y,z positions
+                        (GLvoid*)0); // Initial offset
 
     /* Vertex colour VBO */
 
-    /* We genereate the RGB VBO */
-    glGenBuffers(1, &object.RGBVBO);
-    glBindBuffer(GL_ARRAY_BUFFER, object.RGBVBO);
-    glBufferData(GL_ARRAY_BUFFER, vertexRGB.size() * sizeof(GLfloat),
-                vertexRGB.data(),
-                GL_STATIC_DRAW);
+    /* We can omit the extra VBO, by adding the rgb in the first one */
+    // /* We genereate the RGB VBO */
+    // glGenBuffers(1, &object.RGBVBO);
+    // glBindBuffer(GL_ARRAY_BUFFER, object.RGBVBO);
+    // glBufferData(GL_ARRAY_BUFFER, vertexRGB.size() * sizeof(GLfloat),
+    //             vertexRGB.data(),
+    //             GL_STATIC_DRAW);
 
     /* We tell OpenGL, how to use the VAO */
     /* Specifically, we link the index of the data in VAO, to the corresponding data in the VBO */
@@ -112,9 +124,16 @@ void OGL_TriangleVertexFC(OGL_VertexObject& object){
     glVertexAttribPointer(1, // VAO index, and how to handle it
                         3, // r, g, b
                         GL_FLOAT, // type of element
-                        GL_FALSE,
-                        0, // Bytes per element
-                        (void*)0); // Offset
+                        GL_FALSE, // Non normalised information
+                        sizeof(GLfloat) * 6, // Bytes per element. We use this to access the rgb right after the positions (3 floats again)
+                        (GLvoid*)(sizeof(GLfloat) * 3)); // Initial offset of the rgb vertices locations
+
+    /* VBO structure: */
+    // VBO
+    // WARN: Stride: We need to jump 6 things NOT 3
+    // if we add a new attribute, we will have to update the strides as well as the initial offsets, ect...
+    // This format can be seen in the vertices vector
+    // x1,y1,z1 _ r1,g1,b1 | x2,y2,z2 _ r2,g2,b2 _ ...
 
     /* Cleanup, to close the arrays/buffers */
     glBindVertexArray(0);
