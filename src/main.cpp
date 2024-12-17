@@ -7,7 +7,9 @@ int main(int argc, char* argv[]){
 
     /* Initialise an object, vertex specification */
     OGL_VertexObject o1;
-    OGL_QuadVertexFC(o1);
+    OGL_TriangleVertexFC(o1);
+    OGL_VertexObject o2;
+    OGL_QuadVertexFC(o2);
 
     /* Graphics pipeline for the shader program */
     GLuint shaderProg;
@@ -23,6 +25,7 @@ int main(int argc, char* argv[]){
         /* OpenGL rendering functions */
         /* Rendering order matters */
         OGL_PreDraw(shaderProg);
+        OGL_DrawObject(o2);
         OGL_DrawObject(o1);
 
         SDL_GL_SwapWindow(SDL2_Win);

@@ -25,6 +25,7 @@ void OGL_Draw(GLuint VAO, GLuint VBO){
     
     /* Draw the selected arrays */
     /* We need to update the 3 to 6 if we are rendering a quad, instead of a triangle */
+    /* 6 Works for triangles as well */
     glDrawArrays(GL_TRIANGLES, 0, 6);
 
     return;

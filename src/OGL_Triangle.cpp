@@ -61,13 +61,13 @@ void OGL_TriangleVertexFC(OGL_VertexObject& object){
         /*  x      y     z */
         /* R     G      B */
         -0.5f, -0.5f, 0.0f, // Vertex 1 pos LV
-        1.0f, 0.0f, 0.0f, // Vertex 1 colours
+        0.0f, 0.0f, 1.0f, // Vertex 1 colours
 
         0.5f, -0.5f, 0.0f,  // Vertex 2 pos RV
         0.0f, 1.0f, 0.0f, // Vertex 2 colours
 
         -0.5f, 0.5f, 0.0f,   // Vertex 3 pos TV
-        0.0f, 0.0f, 1.0f // Vertex 3 colours
+        1.0f, 0.0f, 0.0f // Vertex 3 colours
     };
     /* z coord is ommited in 2D */
 
