@@ -28,9 +28,9 @@ void OGL_PreDraw(GLuint graphicsPipeline);
  * @brief Draws the pre-drawn assets to the window
  *  
  * @param VAO Vertex array object to draw
- * @param VBO Vertex buffer object to draw from
+ * @param VBO Vertex buffer object to draw from (not required, since the VAO has all the data we want)
  */
-void OGL_Draw(GLuint VAO, GLuint VBO);
+void OGL_Draw(GLuint VAO, GLuint VBO = 0);
 
 /**
  * @brief Draws an object

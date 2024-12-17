@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "*.aux": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "vector": "cpp"
     }
 }

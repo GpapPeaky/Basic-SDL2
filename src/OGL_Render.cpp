@@ -21,7 +21,7 @@ void OGL_PreDraw(GLuint graphicsPipeline){
 void OGL_Draw(GLuint VAO, GLuint VBO){
     /* Select the array and buffer vertex objects */
     glBindVertexArray(VAO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    // glBindBuffer(GL_ARRAY_BUFFER, VBO);
     
     /* Draw the selected arrays */
     glDrawArrays(GL_TRIANGLES, 0, 3);
@@ -30,7 +30,7 @@ void OGL_Draw(GLuint VAO, GLuint VBO){
 }
 
 void OGL_DrawObject(OGL_VertexObject object){
-    OGL_Draw(object.VAO, object.VBO);
+    OGL_Draw(object.VAO); /* We can call it like this */
 
     return;
 }

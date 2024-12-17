@@ -7,13 +7,11 @@ int main(int argc, char* argv[]){
 
     /* Initialise an object, vertex specification */
     OGL_VertexObject o1;
-    OGL_VertexObject o2;
-    OGL_TriangleVertexF(o1);
-    OGL_TriangleVertex2D(o2, 0.9f, 0.9f, -0.9f, -0.5f, 0.5f, 0.5f);
+    OGL_TriangleVertexFC(o1);
 
-    /* Graphics pipeline fro shaders */
+    /* Graphics pipeline for the shader program */
     GLuint shaderProg;
-    shaderProg = OGL_CreateGraphicsPipeline(OGLS_PeakyV, OGLS_PeakyF);
+    shaderProg = OGL_CreateGraphicsPipeline(OGLS_DummyV, OGLS_DummyF);
 
     /* Main loop */
     bool SDL2_Quit = false;
@@ -23,9 +21,9 @@ int main(int argc, char* argv[]){
         /* Updates to assets / sprites */
 
         /* OpenGL rendering functions */
+        /* Rendering order matters */
         OGL_PreDraw(shaderProg);
         OGL_DrawObject(o1);
-        OGL_DrawObject(o2); /* We need to call the OGL_Draw(), to specifiy what Vertex Object to draw */
 
         SDL_GL_SwapWindow(SDL2_Win);
     }

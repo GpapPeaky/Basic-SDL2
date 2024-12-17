@@ -5,10 +5,13 @@
  */
 const std::string OGLS_DummyV =
     "#version 410 core\n"
-    "in vec4 pos;\n"
+    "layout(location=0) in vec3 pos; // Layout of the vertex in the VAO\n"
+    "layout(location=1) in vec3 rgb;\n"
+    "out vec3 v_vRGB; // will give it to the fragment shader\n"
     "void main()\n"
     "{\n"
-    "   gl_Position = vec4(pos.x, pos.y, pos.z, pos.w);\n"
+    "   v_vRGB = rgb; // we pass the values of the RGBVBO\n"
+    "   gl_Position = vec4(pos.x, pos.y, pos.z, 1.0f); // We use the pos vertices for the position\n"
     "}\n";
 
 /**
@@ -16,8 +19,9 @@ const std::string OGLS_DummyV =
  */
 const std::string OGLS_DummyF = 
     "#version 410 core\n"
-    "out vec4 color;\n"
+    "in vec3 v_vRGB; // Takes it from the vertex shader\n"
+    "out vec4 fragColour;\n"
     "void main()\n"
     "{\n"
-    "   color = vec4(1.0f, 0.5f, 0.0f, 1.0f);\n"
+    "   fragColour = vec4(v_vRGB, 1.0f);\n"
     "}\n";
