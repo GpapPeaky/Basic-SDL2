@@ -13,6 +13,8 @@ extern SDL_Renderer* SDL2_Rnd;
 
 /**
  * @brief Initialises the renderer, the window, and the SDL/IMG modes required
+ * 
+ * @returns 0 on success, -1 on failure
 */
 int SDL2_InitWin(void);
 

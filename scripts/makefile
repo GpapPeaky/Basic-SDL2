@@ -6,7 +6,11 @@ SRCP = src/
 
 SRC = $(SRCP)main.cpp\
 $(SRCP)SDL2_Event.cpp\
-$(SRCP)SDL2_InitWin.cpp
+$(SRCP)SDL2_InitWin.cpp\
+$(SRCP)SDL2_Images.cpp\
+$(SRCP)BSC_Entity.cpp\
+$(SRCP)BSC_EntityStats.cpp\
+$(SRCP)BSC_EntityLevel.cpp
 
 SDL2I = -IThirdParty/SDL2/include/SDL2
 SDL2L = -LThirdParty/SDL2/lib
