@@ -10,7 +10,8 @@ BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level){
         case PLAYER:
             entity->img.surface = IMG_Load("assets/player.png");
             entity->img.texture = SDL_CreateTextureFromSurface(SDL2_Rnd, entity->img.surface);
-            entity->img.position = {0, 0, entity->img.surface->w * BSC_UNIVERSAL_ENTITY_SIZE_FACTOR, entity->img.surface->h * BSC_UNIVERSAL_ENTITY_SIZE_FACTOR};
+            entity->img.position = {0, 0, static_cast<float>(entity->img.surface->w * BSC_UNIVERSAL_ENTITY_SIZE_FACTOR), 
+            static_cast<float>(entity->img.surface->h * BSC_UNIVERSAL_ENTITY_SIZE_FACTOR)};
             entity->stats.level.level = level;
             entity->stats.level.remainingXp = 100;
             entity->stats.level.baseLevelUpThreshold = 100;
@@ -19,13 +20,14 @@ BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level){
             entity->stats.baseDef = 5.0f;
             entity->stats.baseAttSpd = 1.0f;
             entity->stats.baseHP = 100.0f;
-            entity->stats.baseSpd = 5.0f;
+            entity->stats.baseSpd = 75.0f;
             break;
 
         case GREEN_SLIME:
-            entity->img.surface = NULL; // Initialize SDL_Surface pointer for green slime
-            entity->img.texture = NULL; // Initialize SDL_Texture pointer for green slime
-            entity->img.position = {0, 0, entity->img.surface->w, entity->img.surface->h};
+            entity->img.surface = IMG_Load("assets/green_slime.png"); // Initialize SDL_Surface pointer for green slime
+            entity->img.texture = SDL_CreateTextureFromSurface(SDL2_Rnd, entity->img.surface);
+            entity->img.position = {0, 0, static_cast<float>(entity->img.surface->w) * BSC_UNIVERSAL_ENTITY_SIZE_FACTOR, 
+            static_cast<float>(entity->img.surface->h) * BSC_UNIVERSAL_ENTITY_SIZE_FACTOR};
             entity->stats.level.level = level;
             entity->stats.level.remainingXp = BSC_NO_XP;
             entity->stats.level.baseLevelUpThreshold = BSC_NO_XP;
@@ -34,13 +36,14 @@ BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level){
             entity->stats.baseDef = 1.0f;
             entity->stats.baseAttSpd = 0.4f;
             entity->stats.baseHP = 10.0f;
-            entity->stats.baseSpd = 2.0f;
+            entity->stats.baseSpd = 75.0f;
             break;
 
         case BLUE_SLIME:
             entity->img.surface = NULL; // Initialize SDL_Surface pointer for blue slime
             entity->img.texture = NULL; // Initialize SDL_Texture pointer for blue slime
-            entity->img.position = {0, 0, entity->img.surface->w, entity->img.surface->h};
+            entity->img.position = {0, 0, static_cast<float>(entity->img.surface->w), 
+            static_cast<float>(entity->img.surface->h)};
             entity->stats.level.level = level;
             entity->stats.level.remainingXp = BSC_NO_XP;
             entity->stats.level.baseLevelUpThreshold = BSC_NO_XP;
@@ -49,13 +52,14 @@ BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level){
             entity->stats.baseDef = 1.0f;
             entity->stats.baseAttSpd = 0.5f;
             entity->stats.baseHP = 11.0f;
-            entity->stats.baseSpd = 2.0f;
+            entity->stats.baseSpd = 75.0f;
             break;
 
         case RED_SLIME:
             entity->img.surface = NULL; // Initialize SDL_Surface pointer for red slime
             entity->img.texture = NULL; // Initialize SDL_Texture pointer for red slime
-            entity->img.position = {0, 0, entity->img.surface->w, entity->img.surface->h};
+            entity->img.position = {0, 0, static_cast<float>(entity->img.surface->w), 
+            static_cast<float>(entity->img.surface->h)};
             entity->stats.level.level = level;
             entity->stats.level.remainingXp = BSC_NO_XP;
             entity->stats.level.baseLevelUpThreshold = BSC_NO_XP;
@@ -64,13 +68,14 @@ BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level){
             entity->stats.baseDef = 1.0f;
             entity->stats.baseAttSpd = 0.5f;
             entity->stats.baseHP = 11.5f;
-            entity->stats.baseSpd = 2.0f;
+            entity->stats.baseSpd = 75.0f;
             break;
 
         case PURPLE_SLIME:
             entity->img.surface = NULL; // Initialize SDL_Surface pointer for red slime
             entity->img.texture = NULL; // Initialize SDL_Texture pointer for red slime
-            entity->img.position = {0, 0, entity->img.surface->w, entity->img.surface->h};
+            entity->img.position = {0, 0, static_cast<float>(entity->img.surface->w), 
+            static_cast<float>(entity->img.surface->h)};
             entity->stats.level.level = level;
             entity->stats.level.remainingXp = BSC_NO_XP;
             entity->stats.level.baseLevelUpThreshold = BSC_NO_XP;
@@ -79,13 +84,14 @@ BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level){
             entity->stats.baseDef = 1.0f;
             entity->stats.baseAttSpd = 0.5f;
             entity->stats.baseHP = 13.0f;
-            entity->stats.baseSpd = 2.0f;
+            entity->stats.baseSpd = 75.0f;
             break;
 
         case BLACK_SLIME:
             entity->img.surface = NULL; // Initialize SDL_Surface pointer for red slime
             entity->img.texture = NULL; // Initialize SDL_Texture pointer for red slime
-            entity->img.position = {0, 0, entity->img.surface->w, entity->img.surface->h};
+            entity->img.position = {0, 0, static_cast<float>(entity->img.surface->w), 
+            static_cast<float>(entity->img.surface->h)};
             entity->stats.level.level = level;
             entity->stats.level.remainingXp = BSC_NO_XP;
             entity->stats.level.baseLevelUpThreshold = BSC_NO_XP;
@@ -94,14 +100,15 @@ BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level){
             entity->stats.baseDef = 1.0f;
             entity->stats.baseAttSpd = 0.5f;
             entity->stats.baseHP = 13.0f;
-            entity->stats.baseSpd = 2.0f;
+            entity->stats.baseSpd = 75.0f;
             break;
         
         default:
             // Handle unknown or uninitialized type
             entity->img.surface = NULL;
             entity->img.texture = NULL;
-            entity->img.position = {0, 0, entity->img.surface->w, entity->img.surface->h};
+            entity->img.position = {0, 0, static_cast<float>(entity->img.surface->w), 
+            static_cast<float>(entity->img.surface->h)};
             entity->stats.level.level = 0;
             entity->stats.level.remainingXp = BSC_NO_XP;
             entity->stats.level.baseLevelUpThreshold = BSC_NO_XP;

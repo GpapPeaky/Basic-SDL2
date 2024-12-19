@@ -5,19 +5,21 @@ int main(int argc, char* argv[]){
     SDL2_InitWin(); /* Initialise */
 
     BSC_CreateEntity(PLAYER, 1);
+    BSC_CreateEntity(GREEN_SLIME, 1);
 
     bool quit = false;
+    Uint32 lastTime = SDL_GetTicks();
     while(!quit){
-        SDL2_HandleEvents(quit); /* Creates a new event to poll per call (Might need to be optimised) */
-
-        /* Updates to assets / sprites */
-
-        SDL_SetRenderDrawColor(SDL2_Rnd, 0, 0, 255, 255);
+        Uint32 currentTime = SDL_GetTicks();
+        float dt = (currentTime - lastTime) / 1000.0f;
+        lastTime = currentTime;
+        SDL2_HandleEvents(quit, dt); /* Creates a new event to poll per call (Might need to be optimised) */
+        SDL2_HandlePlayerMovement(BSC_Entities[PLAYER][0], dt);
 
         SDL_RenderClear(SDL2_Rnd);
 
-        SDL_RenderCopy(SDL2_Rnd, BSC_Entities[PLAYER][0]->img.texture, NULL, &BSC_Entities[PLAYER][0]->img.position);
-        /* Render functions */
+        SDL_RenderCopyF(SDL2_Rnd, BSC_Entities[PLAYER][0]->img.texture, NULL, &BSC_Entities[PLAYER][0]->img.position);
+        SDL_RenderCopyF(SDL2_Rnd, BSC_Entities[GREEN_SLIME][0]->img.texture, NULL, &BSC_Entities[GREEN_SLIME][0]->img.position);
 
         SDL_RenderPresent(SDL2_Rnd);
     }

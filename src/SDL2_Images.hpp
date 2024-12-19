@@ -9,5 +9,5 @@
 typedef struct SDL2_Images{
     SDL_Surface* surface;
     SDL_Texture* texture;
-    SDL_Rect position;
+    SDL_FRect position;
 }SDL2_Images;
