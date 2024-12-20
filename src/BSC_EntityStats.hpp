@@ -3,7 +3,7 @@
 #include "BSC_EntityLevel.hpp"
 
 /**
- * @brief NewStat += Stat / 10
+ * @brief NewStat += Stat / 10, with each level up
  */
 #define BSC_LVL_REDUCTION_FACTOR 10
 
@@ -12,12 +12,12 @@
  */
 typedef struct BSC_EntityStats{
     BSC_EntityLevel level; /* Entity level */
-    float baseAtt; /* Base attack */
-    float baseDef; /* Base defence */
-    float baseAttSpd; /* Base attack speed (rate of fire) */
-    float baseHP; /* Base HP */
-    float baseSpd; /* Base speed (movement speed) */
-    float baseProjSpd; /* Base projectile speed */
+    float baseAtt;         /* Base attack */
+    float baseDef;         /* Base defence */
+    float baseAttSpd;      /* Base attack speed (rate of fire) */
+    float baseHP;          /* Base HP */
+    float baseSpd;         /* Base speed (movement speed) */
+    float baseProjSpd;     /* Base projectile speed */
 }BSC_EntityStats;
 
 /**

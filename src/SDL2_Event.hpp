@@ -1,5 +1,5 @@
 #include "../ThirdParty/SDL2/include/SDL2/SDL.h"
-#include "BSC_Entity.hpp"
+#include "BSC_Entity.hpp"                       /* Handling player movement and player firing */
 #include <math.h>
 
 #ifndef __SDL2_EVENT_HPP__

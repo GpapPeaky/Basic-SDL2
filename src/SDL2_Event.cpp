@@ -2,10 +2,29 @@
 
 void SDL2_HandleEvents(bool& quit, float dt){
     SDL_Event e;
+    static bool mousePressed = false;
+    static Uint32 lastFireTime = 0;
 
     while(SDL_PollEvent(&e)){
         if(e.type == SDL_QUIT || (e.type == SDL_KEYDOWN && (e.key.keysym.sym == SDLK_ESCAPE || e.key.keysym.sym == SDLK_e))){
             quit = true;
+        }else if(e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT){
+            mousePressed = true;
+        }else if(e.type == SDL_MOUSEBUTTONUP && e.button.button == SDL_BUTTON_LEFT){
+            mousePressed = false;
+        }
+    }
+
+    if(mousePressed){
+        int mouseX, mouseY;
+        SDL_GetMouseState(&mouseX, &mouseY);
+
+        Uint32 currentTime = SDL_GetTicks();
+        Uint32 fireDelay = 1000 / BSC_Entities[PLAYER][0]->stats.baseAttSpd;
+
+        if(currentTime - lastFireTime >= fireDelay){
+            BSC_EntityFiring(BSC_Entities[PLAYER][0], mouseX, mouseY);
+            lastFireTime = currentTime;
         }
     }
 

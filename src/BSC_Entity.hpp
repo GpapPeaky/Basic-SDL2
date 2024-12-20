@@ -1,13 +1,14 @@
 #pragma once
 
 #include "SDL2_Images.hpp"
-#include "SDL2_InitWin.hpp" /* For the renderer */
-#include "BSC_EntityStats.hpp"
+#include "SDL2_InitWin.hpp"     /* For the renderer */
+#include "BSC_EntityStats.hpp" 
+#include "BSC_EntityFire.hpp" 
 #include <iostream>
 #include <vector>
 #include <unordered_map>
 
-#define BSC_UNIVERSAL_ENTITY_SIZE_FACTOR 2
+#define BSC_UNIVERSAL_ENTITY_SIZE_FACTOR 2.1f
 
 /**
  * @brief Entity type enumerators
@@ -75,10 +76,11 @@ typedef enum BSC_EntityType{
  * @brief Entity abstraction
  */
 typedef struct BSC_Entity{
-    SDL2_Images img; /* Image data */
-    BSC_EntityStats stats; /* Stats and level info */
-    BSC_EntityType type; /* Entity type */
-    unsigned int Id; /* Entity id */
+    SDL2_Images img;        /* Image data */
+    BSC_EntityStats stats;  /* Stats and level info */
+    BSC_EntityType type;    /* Entity type */
+    std::vector<BSC_EntityFire*> fire;
+    unsigned int Id;        /* Entity id */
 }BSC_Entity;
 
 /**
@@ -96,7 +98,7 @@ extern std::unordered_map<BSC_EntityType, std::vector<BSC_Entity*>> BSC_Entities
 BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level);
 
 /**
- * @brief Renders a specified entity
+ * @brief Renders a specified entity, along with it's votes
  * 
  * @param entity Entity to render
  * @param vectorIdx Vector idx
@@ -104,6 +106,23 @@ BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level);
 void BSC_RenderEntity(BSC_Entity* entity, unsigned int vectorIdx);
 
 /**
- * @brief Renders all entities
+ * @brief Renders all entities, along with their bullets
  */
 void BSC_RenderEntities(void);
+
+/**
+ * @brief Entity fire function
+ * 
+ * @param entity Entity to fire
+ * @param mouseX Mouse X coordinate
+ * @param mouseY Mouse Y coordinate
+ */
+void BSC_EntityFiring(BSC_Entity* entity, int mouseX, int mouseY);
+
+/**
+ * @brief Updates the fire of an entity
+ * 
+ * @param entity Entity to update
+ * @param dt deltatime
+ */
+void BSC_UpdateEntityFire(BSC_Entity* entity, float dt);
