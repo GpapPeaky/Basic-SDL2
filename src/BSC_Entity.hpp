@@ -81,6 +81,9 @@ typedef struct BSC_Entity{
     unsigned int Id; /* Entity id */
 }BSC_Entity;
 
+/**
+ * @brief Sorted by enemy type, includes a vector of enemies per type
+ */
 extern std::unordered_map<BSC_EntityType, std::vector<BSC_Entity*>> BSC_Entities;
 
 /**
