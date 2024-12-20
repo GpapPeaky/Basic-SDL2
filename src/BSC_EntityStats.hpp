@@ -17,6 +17,7 @@ typedef struct BSC_EntityStats{
     float baseAttSpd; /* Base attack speed (rate of fire) */
     float baseHP; /* Base HP */
     float baseSpd; /* Base speed (movement speed) */
+    float baseProjSpd; /* Base projectile speed */
 }BSC_EntityStats;
 
 /**

@@ -18,8 +18,7 @@ int main(int argc, char* argv[]){
 
         SDL_RenderClear(SDL2_Rnd);
 
-        SDL_RenderCopyF(SDL2_Rnd, BSC_Entities[PLAYER][0]->img.texture, NULL, &BSC_Entities[PLAYER][0]->img.position);
-        SDL_RenderCopyF(SDL2_Rnd, BSC_Entities[GREEN_SLIME][0]->img.texture, NULL, &BSC_Entities[GREEN_SLIME][0]->img.position);
+        BSC_RenderEntities();
 
         SDL_RenderPresent(SDL2_Rnd);
     }

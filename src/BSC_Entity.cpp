@@ -20,7 +20,8 @@ BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level){
             entity->stats.baseDef = 5.0f;
             entity->stats.baseAttSpd = 1.0f;
             entity->stats.baseHP = 100.0f;
-            entity->stats.baseSpd = 75.0f;
+            entity->stats.baseSpd = 85.0f;
+            entity->stats.baseProjSpd = 90.0f;
             break;
 
         case GREEN_SLIME:
@@ -37,6 +38,7 @@ BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level){
             entity->stats.baseAttSpd = 0.4f;
             entity->stats.baseHP = 10.0f;
             entity->stats.baseSpd = 75.0f;
+            entity->stats.baseProjSpd = 80.0f;
             break;
 
         case BLUE_SLIME:
@@ -53,6 +55,7 @@ BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level){
             entity->stats.baseAttSpd = 0.5f;
             entity->stats.baseHP = 11.0f;
             entity->stats.baseSpd = 75.0f;
+            entity->stats.baseProjSpd = 80.0f;
             break;
 
         case RED_SLIME:
@@ -69,6 +72,7 @@ BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level){
             entity->stats.baseAttSpd = 0.5f;
             entity->stats.baseHP = 11.5f;
             entity->stats.baseSpd = 75.0f;
+            entity->stats.baseProjSpd = 80.0f;
             break;
 
         case PURPLE_SLIME:
@@ -85,6 +89,7 @@ BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level){
             entity->stats.baseAttSpd = 0.5f;
             entity->stats.baseHP = 13.0f;
             entity->stats.baseSpd = 75.0f;
+            entity->stats.baseProjSpd = 80.0f;
             break;
 
         case BLACK_SLIME:
@@ -101,6 +106,7 @@ BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level){
             entity->stats.baseAttSpd = 0.5f;
             entity->stats.baseHP = 13.0f;
             entity->stats.baseSpd = 75.0f;
+            entity->stats.baseProjSpd = 80.0f;
             break;
         
         default:
@@ -118,6 +124,7 @@ BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level){
             entity->stats.baseAttSpd = 0.0f;
             entity->stats.baseHP = 0.0f;
             entity->stats.baseSpd = 0.0f;
+            entity->stats.baseProjSpd = 0.0f;
             std::fprintf(stderr, "Unkown Entity Type\n");
             break;
     }
@@ -132,4 +139,23 @@ BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level){
     BSC_Entities[entity->type].push_back(entity);
 
     return entity;
+}
+
+void BSC_RenderEntity(BSC_Entity* entity, unsigned int vectorIdx){
+    if(entity == NULL){
+        fprintf(stderr, "No entity found\n");
+    }
+    SDL_RenderCopyF(SDL2_Rnd, BSC_Entities[entity->type][vectorIdx]->img.texture, NULL, &BSC_Entities[entity->type][vectorIdx]->img.position);
+
+    return;
+}
+
+void BSC_RenderEntities(void){
+    for(const auto& [entityType, entityVector] : BSC_Entities){ // Use structured binding in C++17 or later
+        for(size_t i = 0 ; i < entityVector.size() ; ++i){
+            BSC_RenderEntity(entityVector[i], i);
+        }
+    }
+
+    return;
 }

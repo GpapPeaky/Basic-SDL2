@@ -67,6 +67,11 @@ typedef enum BSC_EntityType{
 }BSC_EntityType;
 
 /**
+ * @brief Max amount of entities
+ */
+#define MAX_ENTITIES BLACK_SLIME_GENERAL
+
+/**
  * @brief Entity abstraction
  */
 typedef struct BSC_Entity{
@@ -86,3 +91,16 @@ extern std::unordered_map<BSC_EntityType, std::vector<BSC_Entity*>> BSC_Entities
  * @returns The created entity
  */
 BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level);
+
+/**
+ * @brief Renders a specified entity
+ * 
+ * @param entity Entity to render
+ * @param vectorIdx Vector idx
+ */
+void BSC_RenderEntity(BSC_Entity* entity, unsigned int vectorIdx);
+
+/**
+ * @brief Renders all entities
+ */
+void BSC_RenderEntities(void);
