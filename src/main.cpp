@@ -4,7 +4,7 @@ int main(int argc, char* argv[]){
     SDL2_InitWin(); /* Initialise */
 
     BSC_CreateEntity(PLAYER, 1);
-    BSC_CreateEntity(GREEN_SLIME_WARRIOR, 1);
+    BSC_CreateEntity(BLACK_SLIME_GENERAL, 1);
 
     bool quit = false;
     Uint32 lastTime = SDL_GetTicks();

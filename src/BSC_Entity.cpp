@@ -145,8 +145,10 @@ BSC_Entity* BSC_CreateEntity(BSC_EntityType entityType, unsigned int level){
         
         default:
             // Handle unknown or uninitialized type
-            entity->img.surface = NULL;
-            entity->img.texture = NULL;
+            entity->img.surface = IMG_Load("assets/gfx/entity/_plc.bmp"); 
+            entity->img.texture = SDL_CreateTextureFromSurface(SDL2_Rnd, entity->img.surface);
+            entity->img.position = {0, 0, static_cast<float>(entity->img.surface->w), 
+            static_cast<float>(entity->img.surface->h)};
             entity->img.position = {0, 0, static_cast<float>(entity->img.surface->w), 
             static_cast<float>(entity->img.surface->h)};
             entity->stats.level.level = 0;
