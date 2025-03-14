@@ -17,12 +17,16 @@ int main(int argc, char* argv[]){
     sp1 = OGL_CreateGraphicsPipeline(OGLS_DummyV, OGLS_DummyF);
     sp2 = OGL_CreateGraphicsPipeline(OGLS_PeakyV, OGLS_PeakyF);
 
+    /* Quad position change testing*/
+
     /* Main loop */
     bool SDL2_Quit = false;
     while(!SDL2_Quit){
         SDL2_HandleEvents(SDL2_Quit); /* Creates a new event to poll per call (Might need to be optimised) */
 
-        /* Updates to assets / sprites */
+        /* Updates to assets / sprites / objects in general */
+        OGL_UpdateObjectPosition(triangle, 0.001f, 0.0f, 0.0f); /* Change in x, not y,z. triangle will move to the right */
+        OGL_UpdateObjectPosition(quad, -0.001f, 0.0f, 0.0f); /* Change in x, not y,z. Quad will move to the left */
 
         /* OpenGL rendering functions */
         OGL_SetScreenBackground(1.f, 1.f, 0.f, 1.f);

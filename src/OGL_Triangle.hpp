@@ -11,6 +11,12 @@
  * 
  * @param object Containts both the VBO and VAO
  * 
+ * @warning ## This should no be used as we have agreed
+ * that all OGL_VertexObjects' VBO's should have position
+ * AND colour in each vertex, this function only creates
+ * vertices with position data and NOT RGB values. Use
+ * OGL_TriangleVertexFC(...) instead.
+ * 
  * @note VBO, and VAO hold only positions, not colours
  */
 void OGL_TriangleVertexF(OGL_VertexObject& object);
