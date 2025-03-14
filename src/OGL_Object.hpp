@@ -38,5 +38,9 @@ typedef struct OGL_VertexObject{
  * @param dx X coordinate change
  * @param dy Y coordinate change
  * @param dz Z coordinate change
+ * 
+ * @note Keep in mind that the center is not
+ * in the top left corner of the screen but at
+ * the center of it
  */
 void OGL_UpdateObjectPosition(OGL_VertexObject& object, GLfloat dx, GLfloat dy, GLfloat dz);
