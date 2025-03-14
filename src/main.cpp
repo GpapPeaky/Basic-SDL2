@@ -6,7 +6,9 @@ int main(int argc, char* argv[]){
     OGL_InitContext(SDL2_Win);
 
     OGL_VertexObject quad;
+    OGL_VertexObject tri;
     OGL_QuadVertexFC(quad);
+    OGL_TriangleVertexFC(tri);
     
     /* Graphics pipeline for the shader program */
     GLuint sp1;
@@ -27,6 +29,7 @@ int main(int argc, char* argv[]){
         /* Rendering order matters */
         OGL_PreDraw(sp1);
         OGL_DrawObject(quad);
+        OGL_DrawObject(tri);
 
         SDL_GL_SwapWindow(SDL2_Win);
     }
