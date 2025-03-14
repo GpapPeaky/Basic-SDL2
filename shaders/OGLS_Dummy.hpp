@@ -1,9 +1,9 @@
 #include <string>
 
 /**
- * @brief Dummy vertex shader string
+ * @brief Rainbow vertex shader string
  */
-const std::string OGLS_DummyV =
+const std::string OGLS_RainbowV =
     "#version 410 core\n"
     "layout(location=0) in vec3 pos; // Layout of the vertex in the VAO\n"
     "layout(location=1) in vec3 rgb;\n"
@@ -15,9 +15,9 @@ const std::string OGLS_DummyV =
     "}\n";
 
 /**
- * @brief Dummy fragment shader string
+ * @brief Rainbow fragment shader string
  */
-const std::string OGLS_DummyF = 
+const std::string OGLS_RainbowF = 
     "#version 410 core\n"
     "in vec3 v_vRGB; // Takes it from the vertex shader\n"
     "out vec4 fragColour;\n"

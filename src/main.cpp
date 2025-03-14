@@ -11,10 +11,8 @@ int main(int argc, char* argv[]){
     OGL_TriangleVertexFC(tri);
     
     /* Graphics pipeline for the shader program */
-    GLuint sp1;
-    sp1 = OGL_CreateGraphicsPipeline(OGLS_DummyV, OGLS_DummyF);
-    
-    /* Quad position change testing*/
+    GLuint rainbowShader;
+    rainbowShader = OGL_CreateGraphicsPipeline(OGLS_RainbowV, OGLS_RainbowF);
     
     /* Main loop */
     bool SDL2_Quit = false;
@@ -27,7 +25,7 @@ int main(int argc, char* argv[]){
         OGL_SetScreenBackground(1.f, 1.f, 0.f, 1.f);
 
         /* Rendering order matters */
-        OGL_PreDraw(sp1);
+        OGL_PreDraw(rainbowShader);
         OGL_DrawObject(quad);
         OGL_DrawObject(tri);
 

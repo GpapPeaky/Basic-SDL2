@@ -1,10 +1,12 @@
+#pragma once
+
 #include "../ThirdParty/SDL2/include/SDL2/SDL.h"
 #include "../ThirdParty/GLAD/include/glad/glad.h"
-#include "OGL_Shader.hpp" // For creating the shader object to be used in the graphics pipeline
-#include "OGL_Object.hpp" // For the vertex object abstraction
+
 #include "SDL2_InitWin.hpp" // For creating the shader object to be used in the graphics pipeline
 
-#pragma once
+#include "OGL_Shader.hpp" // For creating the shader object to be used in the graphics pipeline
+#include "OGL_Object.hpp" // For the vertex object abstraction
 
 /**
  * @brief Creates the graphics pipeline, with the vertex and
