@@ -1,10 +1,11 @@
-#include "../ThirdParty/SDL2/include/SDL2/SDL.h"
-#include "../ThirdParty/GLAD/include/glad/glad.h" /* OpenGL */
-#include "SDL2_InitWin.hpp" /* For the window */
-
 #pragma once
 
-extern SDL_GLContext OGL_Context;
+#include "../ThirdParty/SDL2/include/SDL2/SDL.h"
+#include "../ThirdParty/GLAD/include/glad/glad.h" /* OpenGL */
+
+#include "SDL2_InitWin.hpp" /* For the window */
+
+extern SDL_GLContext OGL_Context; /* Global OpenGL window context */
 
 /**
  * @brief Initialises the OpenGL context for a window

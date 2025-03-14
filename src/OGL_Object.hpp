@@ -8,6 +8,10 @@
 
 /**
  * @brief Contains The Vertex Buffer Objects and Vertex Array Object
+ * 
+ * @warning ##  In order to use these objects, we need regferences
+ * and not pointers with allocated memory (for some reason I don't
+ * know).
  */
 typedef struct OGL_VertexObject{
     GLuint VAO; /* Vertex array object */
@@ -16,7 +20,7 @@ typedef struct OGL_VertexObject{
     else the OGL_VertexObject will be nullified. Objects that only have 3 floats
     in each vertex, have only position data, and not colour data, they 
     are used for testing */
-    
+
     /* By adding more 'VBOs' we can give more data to each object */
     /* And if it is not required, we simply do not engage with the fields */
     /* We can omit the extra VBO by only using one */

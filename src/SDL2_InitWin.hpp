@@ -1,9 +1,9 @@
+#pragma once
+
 #include "../ThirdParty/SDL2/include/SDL2/SDL.h"
 #include "../ThirdParty/SDL2/include/SDL2/SDL_image.h"
-#include <iostream>
 
-#ifndef __SDL2_INITWIN_HPP__
-#define __SDL2_INITWIN_HPP__
+#include <iostream>
 
 #define SUCCESS 0
 #define FAILURE -1
@@ -18,5 +18,3 @@ extern SDL_Renderer* SDL2_Rnd;
  * @brief Initialises the renderer, the window, and the SDL/IMG modes required
 */
 int SDL2_InitWin(void);
-
-#endif

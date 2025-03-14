@@ -71,7 +71,7 @@ void OGL_TriangleVertexFC(OGL_VertexObject& object){
     /* Tightly packed data format */
     
     const std::vector<GLfloat> vertices{
-        /* Rendering is completed with CCW order (LV->RV->TV) */
+        /* Rendering is completed with CCW order (LV.RV.TV) */
         /*  x      y     z */
         /* R     G      B */
         -0.5f, -0.5f, 0.0f, // Vertex 1 pos LV

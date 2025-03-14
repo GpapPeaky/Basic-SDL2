@@ -1,7 +1,8 @@
-#include "../ThirdParty/GLAD/include/glad/glad.h"
-#include <string>
-
 #pragma once
+
+#include "../ThirdParty/GLAD/include/glad/glad.h"
+
+#include <string>
 
 /**
  * @brief Compiles the given shader source

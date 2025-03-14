@@ -23,5 +23,8 @@ void OGL_UpdateObjectPosition(OGL_VertexObject& object, GLfloat dx, GLfloat dy, 
     /* Unmap the bufer after applying position changes */
     glUnmapBuffer(GL_ARRAY_BUFFER);
 
+    /* Update buffer data */
+    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(GLfloat) * 6 * object.verticesCount, vertices);
+
     return;
 }
