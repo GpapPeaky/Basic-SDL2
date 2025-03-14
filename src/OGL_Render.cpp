@@ -5,22 +5,33 @@ GLuint OGL_CreateGraphicsPipeline(const std::string& vs, const std::string& fs){
 }
 
 void OGL_PreDraw(GLuint graphicsPipeline){
+    /* Save the current OpenGL state */
+    GLint depthTestEnabled, cullFaceEnabled;
+    glGetIntegerv(GL_DEPTH_TEST, &depthTestEnabled);
+    glGetIntegerv(GL_CULL_FACE, &cullFaceEnabled);
+
     glDisable(GL_DEPTH_TEST);
     glDisable(GL_CULL_FACE);
     
     glViewport(0, 0, WIN_W, WIN_H);
-    /* Screen background */
-    glClearColor(1.f, 1.f, 0.f, 1.f);
-    glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
     glUseProgram(graphicsPipeline); /* Pipeline previously created */
+
+    /* Reset to the previous OpenGL state */
+    if(depthTestEnabled){
+        glEnable(GL_DEPTH_TEST);
+    }
+    
+    if(cullFaceEnabled){
+        glEnable(GL_CULL_FACE);
+    }
 
     return;
 }
 
-void OGL_Draw(GLuint VAO, GLuint VBO, GLuint IBO){
+void OGL_Draw(OGL_VertexObject& object){
     /* Select the array and buffer vertex objects */
-    glBindVertexArray(VAO);
+    glBindVertexArray(object.VAO);
     // glBindBuffer(GL_ARRAY_BUFFER, VBO);
     
     /* Draw the selected arrays */
@@ -30,15 +41,25 @@ void OGL_Draw(GLuint VAO, GLuint VBO, GLuint IBO){
     // glDrawArrays(GL_TRIANGLES, 0, 6);
     /* For index arrays */
     glDrawElements(GL_TRIANGLES,
-                6, // How many "items" to render
+                object.verticesCount, // How many "items" / vertices to render
                 GL_UNSIGNED_INT, // Type
                 0);
 
     return;
 }
 
-void OGL_DrawObject(OGL_VertexObject object){
-    OGL_Draw(object.VAO, 0, object.IBO); /* We can call it like this */
+void OGL_DrawObject(OGL_VertexObject& object){
+    OGL_Draw(object); /* We can call it like this */
+
+    return;
+}
+
+void OGL_SetScreenBackground(float r, float g, float b, float a){
+    /* Screen background, this has to be done seperately
+    before other rendering functions, since the buffer is
+    overwritten and cleared, when called in pre-draw */
+    glClearColor(r, g, b, a);
+    glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
     return;
 }

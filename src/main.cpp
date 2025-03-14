@@ -6,12 +6,16 @@ int main(int argc, char* argv[]){
     OGL_InitContext(SDL2_Win);
 
     /* Initialise an object, vertex specification */
-    OGL_VertexObject o2;
-    OGL_QuadVertexFC(o2);
+    OGL_VertexObject quad;
+    OGL_VertexObject triangle;
+    OGL_QuadVertexFC(quad);
+    OGL_TriangleVertexFC(triangle);
 
     /* Graphics pipeline for the shader program */
-    GLuint shaderProg;
-    shaderProg = OGL_CreateGraphicsPipeline(OGLS_DummyV, OGLS_DummyF);
+    GLuint sp1;
+    GLuint sp2;
+    sp1 = OGL_CreateGraphicsPipeline(OGLS_DummyV, OGLS_DummyF);
+    sp2 = OGL_CreateGraphicsPipeline(OGLS_PeakyV, OGLS_PeakyF);
 
     /* Main loop */
     bool SDL2_Quit = false;
@@ -21,9 +25,13 @@ int main(int argc, char* argv[]){
         /* Updates to assets / sprites */
 
         /* OpenGL rendering functions */
+        OGL_SetScreenBackground(1.f, 1.f, 0.f, 1.f);
+
         /* Rendering order matters */
-        OGL_PreDraw(shaderProg);
-        OGL_DrawObject(o2);
+        OGL_PreDraw(sp2);
+        OGL_DrawObject(quad);
+        OGL_PreDraw(sp1);
+        OGL_DrawObject(triangle);
 
         SDL_GL_SwapWindow(SDL2_Win);
     }

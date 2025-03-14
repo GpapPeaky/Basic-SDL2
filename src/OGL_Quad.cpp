@@ -1,6 +1,8 @@
 #include "OGL_Quad.hpp"
 
 void OGL_QuadVertexFC(OGL_VertexObject& object){
+    object.verticesCount = 6; /* 6 vertices for quads (2 triangles) */
+    
     /* Lives on the CPU */
     /* We can have more attributes in here, for example vertex1 can also have R,G,B,A floats */
     /* We will remove the extra vector */

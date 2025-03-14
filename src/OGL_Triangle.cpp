@@ -1,6 +1,8 @@
 #include "OGL_Triangle.hpp"
 
 void OGL_TriangleVertexF(OGL_VertexObject& object){
+    object.verticesCount = 3; /* Triangle has 3 vertices */
+
     /* Lives on the CPU */
     /* We can have more attributes in here, for example vertex1 can also have R,G,B,A floats */
     const std::vector<GLfloat> vertexPos{
@@ -27,6 +29,16 @@ void OGL_TriangleVertexF(OGL_VertexObject& object){
                 vertexPos.data(), // Data 
                 GL_STATIC_DRAW); // Give OpenGL, a "taste" of what we will use the VBO for
 
+    const std::vector<GLuint> indexBuffer { 0, 1, 2 }; /* Create the index buffer */
+
+    /* Generate the rendering order, which is calculated wit the index buffer object */
+    glGenBuffers(1, &object.IBO);
+    /* Not the array buffer, but the element array/index buffer */
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, object.IBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexBuffer.size() * sizeof(GLuint),
+                indexBuffer.data(),
+                GL_STATIC_DRAW);
+
     /* Enable attributes of the vertex (position for example) */
     /* We tell OpenGL, how to use the VAO */
     /* Specifically, we link the index of the data in VAO, to the corresponding data in the VBO */
@@ -50,6 +62,8 @@ void OGL_TriangleVertexF(OGL_VertexObject& object){
 }
 
 void OGL_TriangleVertexFC(OGL_VertexObject& object){
+    object.verticesCount = 3; /* Triangle has 3 vertices */
+
     /* Lives on the CPU */
     /* We can have more attributes in here, for example vertex1 can also have R,G,B,A floats */
     /* We will remove the extra vector */
@@ -95,6 +109,16 @@ void OGL_TriangleVertexFC(OGL_VertexObject& object){
     glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(GLfloat), // Size of data , doesn't change since these are all floats
                 vertices.data(), // Data 
                 GL_STATIC_DRAW); // Give OpenGL, a hint of what we will use the data for
+
+    const std::vector<GLuint> indexBuffer { 0, 1, 2 }; /* Create the index buffer */
+
+    /* Generate the rendering order, which is calculated wit the index buffer object */
+    glGenBuffers(1, &object.IBO);
+    /* Not the array buffer, but the element array/index buffer */
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, object.IBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexBuffer.size() * sizeof(GLuint),
+                indexBuffer.data(),
+                GL_STATIC_DRAW);
 
     /* Enable attributes of the vertex (position for example) */
     /* We tell OpenGL, how to use the VAO */

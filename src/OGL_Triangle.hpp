@@ -1,5 +1,7 @@
 #include "../ThirdParty/GLAD/include/glad/glad.h" /* OpenGL */
+
 #include "OGL_Object.hpp"
+
 #include <vector> /* For the vertices */
 
 #pragma once

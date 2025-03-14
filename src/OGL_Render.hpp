@@ -26,16 +26,33 @@ void OGL_PreDraw(GLuint graphicsPipeline);
 
 /**
  * @brief Draws the pre-drawn assets to the window
+ * 
+ * @param object Vertex object to draw 
  *  
- * @param VAO Vertex array object to draw
- * @param VBO Vertex buffer object to draw from (not required, since the VAO has all the data we want)
- * @param IBO Index buffer object (rendering order of vertices)
+ * @note VAO Vertex array object to draw
+ * @note VBO Vertex buffer object to draw from (not required, since the VAO has all the data we want)
+ * @note IBO Index buffer object (rendering order of vertices)
  */
-void OGL_Draw(GLuint VAO, GLuint VBO, GLuint IBO);
+void OGL_Draw(OGL_VertexObject& object);
 
 /**
  * @brief Draws an object
  * 
  * @param object Object to draw
  */
-void OGL_DrawObject(OGL_VertexObject object);
+void OGL_DrawObject(OGL_VertexObject& object);
+
+/**
+ * @brief Sets the screen's background
+ * to a specifed colour, this data is
+ * saved in a buffer where other objects
+ * live, so it has to be done before
+ * rendering OGL_VertexObject's
+ * in order not to mess with their buffers
+ * 
+ * @param r Red value from 0 to 1.0 (0 to 255)
+ * @param g Green value from 0 to 1.0 (0 to 255)
+ * @param b Blue value from 0 to 1.0 (0 to 255)
+ * @param a ALpha value from 0 to 1.0 (0 to 255)
+ */
+void OGL_SetScreenBackground(float r, float g, float b, float a);
