@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../ThirdParty/SDL2/include/SDL2/SDL.h" /* SDL2 */
-#include "../ThirdParty/GLAD/include/glad/glad.h" /* GLAD */
+#include "../ThirdParty/SDL2/include/SDL2/SDL.h"    /* SDL2 */
+#include "../ThirdParty/GLAD/include/glad/glad.h"   /* GLAD */
 
 #include <iostream> /* Printing */
 #include <vector>   /* For vectors */
@@ -19,7 +19,15 @@ typedef struct OGL_VertexObject{
     that each vertex in the VBO will consist of 3 floats, 3 for position, 3 for colour
     else the OGL_VertexObject will be nullified. Objects that only have 3 floats
     in each vertex, have only position data, and not colour data, they 
-    are used for testing */
+    are used for testing, OGL_VertexObject can ALSO have texture coordinates
+    in order to load bitmaps onto quads, so we have another 'field'
+    inside the VBO that will consist of texture coordinates
+    (see: OGL_TextureQuad.cpp l:7) so we have this format:
+    
+    // pos      // colour   // texture
+    X, Y, Z,    R, G, B,    S, T 
+    
+    3 + 3 + 2 floats! */
 
     /* By adding more 'VBOs' we can give more data to each object */
     /* And if it is not required, we simply do not engage with the fields */

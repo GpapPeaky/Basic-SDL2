@@ -7,4 +7,4 @@
  * 
  * @param object Object to store data
  */
-void OGL_QuadVertexFC(OGL_VertexObject& object);
+void OGL_CreateQuadVertexFC(OGL_VertexObject& object);

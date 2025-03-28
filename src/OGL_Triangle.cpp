@@ -1,6 +1,6 @@
 #include "OGL_Triangle.hpp"
 
-void OGL_TriangleVertexF(OGL_VertexObject& object){
+void OGL_CreateTriangleVertexF(OGL_VertexObject& object){
     object.verticesCount = 3; /* Triangle has 3 vertices */
 
     /* Lives on the CPU */
@@ -61,7 +61,7 @@ void OGL_TriangleVertexF(OGL_VertexObject& object){
     return;
 }
 
-void OGL_TriangleVertexFC(OGL_VertexObject& object){
+void OGL_CreateTriangleVertexFC(OGL_VertexObject& object){
     object.verticesCount = 3; /* Triangle has 3 vertices */
 
     /* Lives on the CPU */

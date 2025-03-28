@@ -1,6 +1,6 @@
 #include "OGL_Quad.hpp"
 
-void OGL_QuadVertexFC(OGL_VertexObject& object){
+void OGL_CreateQuadVertexFC(OGL_VertexObject& object){
     object.verticesCount = 6; /* 6 vertices for quads (2 triangles) */
 
     /* Lives on the CPU */

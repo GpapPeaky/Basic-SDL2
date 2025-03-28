@@ -19,7 +19,7 @@
  * 
  * @note VBO, and VAO hold only positions, not colours
  */
-void OGL_TriangleVertexF(OGL_VertexObject& object);
+void OGL_CreateTriangleVertexF(OGL_VertexObject& object);
 
 /**
  * @brief Creates the vertices of a triangle (fixed, coloured)
@@ -28,4 +28,4 @@ void OGL_TriangleVertexF(OGL_VertexObject& object);
  * 
  * @note VBO, and VAO hold positions and colours
  */
-void OGL_TriangleVertexFC(OGL_VertexObject& object);
+void OGL_CreateTriangleVertexFC(OGL_VertexObject& object);

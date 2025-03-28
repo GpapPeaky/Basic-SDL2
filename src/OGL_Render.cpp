@@ -13,7 +13,7 @@ void OGL_PreDraw(GLuint graphicsPipeline){
     glDisable(GL_DEPTH_TEST);
     glDisable(GL_CULL_FACE);
     
-    glViewport(0, 0, WIN_W, WIN_H);
+    glViewport(0, 0, SDL2_WinWidth, SDL2_WinHeight); /* Viewport is also important, and can mess things up */
 
     glUseProgram(graphicsPipeline); /* Pipeline previously created */
 
