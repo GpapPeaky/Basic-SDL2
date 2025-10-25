@@ -4,10 +4,10 @@ int main(int argc, char* argv[]){
 
     SDL2_InitWin(); /* Initialise */
 
-    bool quit = false;
+    bool SDL2_Quit = false;
 
-    while(!quit){
-        SDL2_HandleEvents(quit); /* Creates a new event to poll per call (Might need to be optimised) */
+    while(!SDL2_Quit){
+        SDL2_HandleEvents(SDL2_Quit); /* Creates a new event to poll per call (Might need to be optimised) */
 
         /* Updates to assets / sprites */
 
@@ -24,5 +24,5 @@ int main(int argc, char* argv[]){
     SDL_DestroyWindow(SDL2_Win);
     SDL_Quit();
 
-    return SUCCESS;
+    return 0;
 }
